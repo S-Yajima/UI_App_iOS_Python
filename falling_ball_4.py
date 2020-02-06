@@ -32,6 +32,8 @@ class MyView(ui.View):
 
         # メインビューの下の壁に接触した場合
         if self.lower_left() >= self.superview.height:
+            # 落下速度を負の値にする。
+            # バウンドする際の落下速度と同じ速さでｙ軸の上部へ移動することになる。
             self.falling_speed = (self.falling_speed * -1) + self.acceleration
             # めり込みを補正する。
             self.y = self.superview.height - self.height
@@ -47,11 +49,11 @@ class MyView(ui.View):
     def move(self):
         self.x = self.x + (self.direction_x * self.direction_x_speed)
         self.y = self.y + self.falling_speed
-
+        # 落下速度を更新する。落下中は0から速度が増加し、
+        # バウンド中は負の数の最大値から速度が0に近づく。
+        # 値が0の時が頂点になる。
         self.falling_speed = self.falling_speed + self.acceleration
-
         # print(self.falling_speed)
-
 
 # Timer イベントで呼び出される
 def schedule(main_view):
