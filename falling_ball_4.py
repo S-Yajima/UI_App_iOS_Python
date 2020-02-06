@@ -9,10 +9,10 @@ import math
 # 円の描画はdraw()メソッド内で.ui.Pathクラスにて行う
 class MyView(ui.View):
     draw_color = 'yellow'
-    direction_x = 1  # 1 : 右、/ -1 : 左
-    direction_x_speed = 2
-    falling_speed = 0
-    acceleration = 0.2
+    direction_x = 1         # 左右進行方向 1 : 右、/ -1 : 左
+    direction_x_speed = 2   # 左右進行速度
+    falling_speed = 0       # 落下速度。0: 頂点 , 正の値: 落下中, 負の値: 上昇中
+    acceleration = 0.2      # 落下加速度
 
     def upper_right(self):
         return (self.x + self.width)
@@ -23,7 +23,7 @@ class MyView(ui.View):
     # メインビューの端に到達した際の角度の変更
     def reflect_main(self):
         # メインビューの左右の壁に接触した場合は
-        # 90°の壁に接触した前提で反射角度を計算し設定する
+        # 左右の進行方向を逆に設定する
         if self.x <= 0:
             self.direction_x = 1
 
