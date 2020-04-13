@@ -166,7 +166,8 @@ class Triangle(MyFigure):
         return (x, y, z)
 
 
-# 背景と床を描画する
+# メイン画面
+# 三角形を配列で保持し描画する
 class BaseView(ui.View):
     triangles = []
     numbers = []
@@ -289,7 +290,7 @@ def move_schedule(main_view, triangle, goal_x, goal_y):
 
 
 # 三角を回転して表示
-def schedule(main_view, angle, indexes, direction, finish_angle):
+def role_schedule(main_view, angle, indexes, direction, finish_angle):
     if isinstance(main_view, BaseView) is False:
         return
 
@@ -310,7 +311,7 @@ def schedule(main_view, angle, indexes, direction, finish_angle):
     angle = (angle + 5)  # % 360
 
     if main_view.on_screen is True and angle <= finish_angle:
-        t1 = threading.Timer(0.02, schedule, args=[main_view, angle, indexes, direction, finish_angle])
+        t1 = threading.Timer(0.02, role_schedule, args=[main_view, angle, indexes, direction, finish_angle])
         t1.start()
 
 
@@ -336,28 +337,28 @@ if __name__ == '__main__':
     delay = 1.0
     direction = int(Direction.X | Direction.Y)
     for i in range(len(main_view.triangles)):
-        t1 = threading.Timer(delay, schedule, args=[main_view, 0, [i], direction, 360])
+        t1 = threading.Timer(delay, role_schedule, args=[main_view, 0, [i], direction, 360])
         t1.start()
         delay += 0.3
 
     delay = 11.0
     direction = Direction.X
     for i in range(len(main_view.triangles)):
-        t2 = threading.Timer(delay, schedule, args=[main_view, 0, [i], direction, 360])
+        t2 = threading.Timer(delay, role_schedule, args=[main_view, 0, [i], direction, 360])
         t2.start()
         delay += 0.3
 
     delay = 21.0
     direction = Direction.Y
     for i in range(len(main_view.triangles)):
-        t3 = threading.Timer(delay, schedule, args=[main_view, 0, [i], direction, 360])
+        t3 = threading.Timer(delay, role_schedule, args=[main_view, 0, [i], direction, 360])
         t3.start()
         delay += 0.3
 
     delay = 23.0
     direction = Direction.Z
     for i in range(len(main_view.triangles) - 1, -1, -1):
-        t4 = threading.Timer(delay, schedule, args=[main_view, 0, [i], direction, 360])
+        t4 = threading.Timer(delay, role_schedule, args=[main_view, 0, [i], direction, 360])
         t4.start()
         delay += 0.3
 
@@ -367,14 +368,14 @@ if __name__ == '__main__':
     indexes_1 = [
         12, 24, 36, 48,
         23, 35, 47, 59]
-    t5 = threading.Timer(delay, schedule, args=[main_view, 0, indexes_1, direction, 270])
+    t5 = threading.Timer(delay, role_schedule, args=[main_view, 0, indexes_1, direction, 270])
     t5.start()
 
     direction_2 = Direction.X
     indexes_2 = [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
         60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
-    t6 = threading.Timer(delay, schedule, args=[main_view, 0, indexes_2, direction_2, 270])
+    t6 = threading.Timer(delay, role_schedule, args=[main_view, 0, indexes_2, direction_2, 270])
     t6.start()
 
     delay = 53.0
