@@ -278,7 +278,7 @@ def rotate_z_schedule(main_view, origami, lock):
 
 # 折り紙を折る手順 1
 # angle 紙を折った角度。
-#				関数を繰り返し呼ぶ度に更新した値を入力する
+# 関数を繰り返し呼ぶ度に更新した値を入力する
 def fold_origami_1_schedule(main_view, origami, angle, lock):
     lock.acquire()
 
@@ -330,7 +330,7 @@ def fold_origami_1_schedule(main_view, origami, angle, lock):
 
 # 折り紙を折る手順 2
 # angle 紙を折った角度。
-#				関数を繰り返し呼ぶ度に更新した値を入力する
+# 関数を繰り返し呼ぶ度に更新した値を入力する
 def fold_origami_2_schedule(
         main_view, origami, angle, lock):
     lock.acquire()
@@ -450,7 +450,7 @@ def fold_origami_2_schedule(
 
 # 折り紙を折る手順 3
 # angle 紙を折った角度。
-#				関数を繰り返し呼ぶ度に更新した値を入力する
+# 関数を繰り返し呼ぶ度に更新した値を入力する
 def fold_origami_3_schedule(main_view, origami, angle, lock):
     lock.acquire()
 
