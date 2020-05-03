@@ -71,6 +71,7 @@ class BaseView(ui.View):
         self.lookat_y = y
         self.lookat_z = z
 
+    # 視点移動で使用するビュー座標のXYZ軸ベクトルを算出する
     def set_camera_coodinate_vector(self):
         # カメラのZ軸ベクトルを算出する
         # カメラの位置座標と、注視点の座標を使用する
