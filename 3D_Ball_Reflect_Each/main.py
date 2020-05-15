@@ -93,7 +93,7 @@ class BaseView(ui.View):
             c_x, c_y, c_z = ceiling.corner_C()
             d_x, d_y, d_z = ceiling.corner_D()
 
-            # 床の法線
+            # 天井の法線
             AB_vector = [b_x - a_x, b_y - a_y, b_z - a_z]
             AC_vector = [c_x - a_x, c_y - a_y, c_z - a_z]
             ceiling_cross = cross_product(AB_vector, AC_vector)
