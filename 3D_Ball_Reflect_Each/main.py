@@ -524,7 +524,6 @@ def reflect_sphere_with_wall(sphere, wall_V_n, wall_x, wall_y, wall_z):
 
 
 # 球を動かす
-# 球が床の上にあるときに動作する
 def move_sphere_schedule(main_view, sphere, lock):
     if isinstance(main_view, BaseView) is False:
         return
@@ -700,7 +699,6 @@ if __name__ == '__main__':
     main_view = BaseView(frame=(0, 0, 375, 667))
     main_view.name = '球同士も反射する球'
     main_view.background_color = 'lightblue'
-    # main_view.background_color = 'black'
 
     # カメラの位置
     main_view.set_camera_position(0, 0, 150)
