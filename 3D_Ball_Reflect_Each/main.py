@@ -745,17 +745,17 @@ if __name__ == '__main__':
     # タイマー処理を設定する
     lock = threading.Lock()
 
-    # 一つ目の球 落下
+    # 一つ目の球 出現
     delay = 1.0
     t1 = threading.Timer(delay, show_sphere_schedule, args=[sphere, lock])
     t1.start()
 
-    # 2つ目の球　落下
+    # 2つ目の球　出現
     delay += 0.5
     t2 = threading.Timer(delay, show_sphere_schedule, args=[sphere_2, lock])
     t2.start()
 
-    # 3つ目の球　落下
+    # 3つ目の球　出現
     delay += 0.5
     t3 = threading.Timer(delay, show_sphere_schedule, args=[sphere_3, lock])
     t3.start()
