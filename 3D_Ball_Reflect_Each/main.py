@@ -93,7 +93,7 @@ class BaseView(ui.View):
             c_x, c_y, c_z = ceiling.corner_C()
             d_x, d_y, d_z = ceiling.corner_D()
 
-            # 床の法線
+            # 天井の法線
             AB_vector = [b_x - a_x, b_y - a_y, b_z - a_z]
             AC_vector = [c_x - a_x, c_y - a_y, c_z - a_z]
             ceiling_cross = cross_product(AB_vector, AC_vector)
@@ -524,7 +524,6 @@ def reflect_sphere_with_wall(sphere, wall_V_n, wall_x, wall_y, wall_z):
 
 
 # 球を動かす
-# 球が床の上にあるときに動作する
 def move_sphere_schedule(main_view, sphere, lock):
     if isinstance(main_view, BaseView) is False:
         return
@@ -700,7 +699,6 @@ if __name__ == '__main__':
     main_view = BaseView(frame=(0, 0, 375, 667))
     main_view.name = '球同士も反射する球'
     main_view.background_color = 'lightblue'
-    # main_view.background_color = 'black'
 
     # カメラの位置
     main_view.set_camera_position(0, 0, 150)
@@ -747,17 +745,17 @@ if __name__ == '__main__':
     # タイマー処理を設定する
     lock = threading.Lock()
 
-    # 一つ目の球 落下
+    # 一つ目の球 出現
     delay = 1.0
     t1 = threading.Timer(delay, show_sphere_schedule, args=[sphere, lock])
     t1.start()
 
-    # 2つ目の球　落下
+    # 2つ目の球　出現
     delay += 0.5
     t2 = threading.Timer(delay, show_sphere_schedule, args=[sphere_2, lock])
     t2.start()
 
-    # 3つ目の球　落下
+    # 3つ目の球　出現
     delay += 0.5
     t3 = threading.Timer(delay, show_sphere_schedule, args=[sphere_3, lock])
     t3.start()
