@@ -228,40 +228,7 @@ class BaseView(ui.View):
 			
 		return (r_x, r_y)
 
-	
-	# sort
-	# ビュー変換後の座標で、視点からの距離の値を比較しソートを行う
-	def sort_triangle(self, corners):
-		a_x, a_y, a_z = (corners[0][0], corners[0][1],corners[0][2])
-		b_x, b_y, b_z = (corners[1][0], corners[1][1],corners[1][2])
-		c_x, c_y, c_z = (corners[2][0], corners[2][1],corners[2][2])
-		
-		# 視点焦点までのベクトルを算出する
-		scr_vector = [
-			0 - (a_x + b_x + c_x) / 3,
-			0 - (a_y + b_y + c_y) / 3,
-			self.screen_depth - (a_z + b_z + c_z) / 3]
-		length = scr_vector[0] ** 2 + scr_vector[1] ** 2 + scr_vector[2] ** 2
-			
-		return length
-	
-	
-	# 球のソート
-	def sort_character(self, character):
-		c_x, c_y, c_z = self.camera_rotation(
-			sphere.center[0], sphere.center[1], sphere.center[2])
-		
-		# 視点焦点までのベクトルを算出する
-		scr_vector = [
-			0 - c_x,
-			0 - c_y,
-			self.screen_depth - c_z]
-		
-		length = scr_vector[0] ** 2 + scr_vector[1] ** 2 + scr_vector[2] ** 2
 
-		return length
-	
-	
 	# 床の色を光源との角度、距離、光量から設定する
 	# 床は青色である事を前提とする
 	def set_floor_color(self, color, light_inner, light_length=1, brightness=1):
